@@ -1,23 +1,28 @@
 
 from skimage import color, io, measure
 import matplotlib.pyplot as plt
-import numpy as np
+#import numpy as np
 import networkx as nx
+
+
+### adjacency = arcs
+### num_regions = nodes
+
 
 class img_planar:
     def img_load():
 
         img = io.imread("NW_AMER.jpg")
         gray = color.rgb2gray(img)
-        print(np.unique(gray)) # values of the pixels in image range from 0-1 
+        #print(np.unique(gray)) # values of the pixels in image range from 0-1 
 
 
 
 #Visualization
-        plt.imshow(gray, cmap="gray")
-        plt.colorbar()
-        plt.axis('off')
-        plt.show()
+        #plt.imshow(gray, cmap="gray")
+        #plt.colorbar()
+        #plt.axis('off')
+        #plt.show()
 
 
 
@@ -25,9 +30,9 @@ class img_planar:
         border = gray < 0.3 
         regions = gray > 0.3
 
-        plt.imshow(regions, cmap="gray")
-        plt.axis('off')
-        plt.show()
+        #plt.imshow(regions, cmap="gray")
+        #plt.axis('off')
+        #plt.show()
 
 
 
@@ -35,11 +40,11 @@ class img_planar:
         labels = measure.label(regions, connectivity=2) 
         num_regions = labels.max()
 #region detection
-        print("Number of regions labeled in the image: ", num_regions)
+        print("Number of regions labeled in the image: ", num_regions - 1)
 
-        io.imshow(labels)
-        plt.axis('off')
-        plt.show()
+        #io.imshow(labels)
+        #plt.axis('off')
+        #plt.show()
 
         return labels, border
 
@@ -58,11 +63,13 @@ class img_planar:
                         labels[y, x-1], # region left
                         labels[y, x+1] # region right
                     ])
-                    neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.
+                    neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.\
+                    neighbors.discard(1)
                     for a in neighbors:
                         for b in neighbors:
                             if a!= b:
                                 adjacency.add(tuple(sorted((int(a), int(b)))))
+        print("set of edges: ", adjacency)
 
         return adjacency
 
