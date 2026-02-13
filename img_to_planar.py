@@ -60,14 +60,14 @@ class img_planar:
 
         '''scanning the whole labeled map
         increase constant value to work for images with thicker borders. Since value is hardcoded, ensure it works with other images as well  '''
-        for y in range (1, h - 4):
-            for x in range(1, w - 4):
+        for y in range (1, h - 12):
+            for x in range(1, w - 12):
                 if border[y, x]:
                     neighbors = set([
-                        labels[y-4, x], # region below     
-                        labels[y+4, x], # region above
-                        labels[y, x-4], # region left
-                        labels[y, x+4] # region right
+                        labels[y-12, x], # region below     
+                        labels[y+12, x], # region above
+                        labels[y, x-12], # region left
+                        labels[y, x+12] # region right
                     ])
                     neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.\
                     for a in neighbors:
