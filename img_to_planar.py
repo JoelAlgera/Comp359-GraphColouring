@@ -58,15 +58,16 @@ class img_planar:
 
         h, w = labels.shape #dimensions of the labeled map
 
-        #scanning the whole labeled map
-        for y in range (1, h - 1):
-            for x in range(1, w - 1):
+        '''scanning the whole labeled map
+        increase constant value to work for images with thicker borders. Since value is hardcoded, ensure it works with other images as well  '''
+        for y in range (1, h - 4):
+            for x in range(1, w - 4):
                 if border[y, x]:
                     neighbors = set([
-                        labels[y-1, x], # region below       
-                        labels[y+1, x], # region above
-                        labels[y, x-1], # region left
-                        labels[y, x+1] # region right
+                        labels[y-4, x], # region below     
+                        labels[y+4, x], # region above
+                        labels[y, x-4], # region left
+                        labels[y, x+4] # region right
                     ])
                     neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.\
                     for a in neighbors:
