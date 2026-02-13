@@ -9,6 +9,27 @@ import networkx as nx
 ### num_regions = nodes
 
 
+def draw_graph(adj: dict | nx.Graph) -> None:
+    """Draw a graph. adj must be an adjacency list (dict of lists) or an nx.Graph.""" #this is just so I can hover for hint in VSCode
+    if isinstance(adj, nx.Graph):
+        G = adj
+    elif isinstance(adj, dict):
+        G = nx.from_dict_of_lists(adj)
+    else:
+        raise TypeError("adj must be an adjacency list (dict) or an nx.Graph")
+        
+    draw_kw = dict(with_labels=True, node_size=750, font_size=10) #this is for the labels
+
+    plt.figure(figsize=(6, 6))
+    try:
+        nx.draw_planar(G, **draw_kw) #this throws an error if the graph is not planar
+
+    except Exception: #we can expect an error if the graph is not planar(quite common actually)
+        print("Tried to draw planar, but failed. Drawing with spring_layout.")
+        pos = nx.spring_layout(G)
+        nx.draw(G, pos=pos, **draw_kw)
+    plt.show()
+
 class img_planar:
     def img_load():
 
@@ -64,7 +85,6 @@ class img_planar:
                         labels[y, x+1] # region right
                     ])
                     neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.\
-                    neighbors.discard(1)
                     for a in neighbors:
                         for b in neighbors:
                             if a!= b:
@@ -77,14 +97,11 @@ class img_planar:
     def graph_result(adjacency):
         graph = nx.Graph()
         graph.add_edges_from(adjacency)
-        if 1 in graph:
-            graph.remove_node(1) 
+        draw_graph(graph)
 
-        plt.figure(figsize=(6,6))
-        nx.draw(graph, with_labels=True, node_size=750, font_size=10)
-        plt.show()
 
-#calls
-    labels, border = img_load()
-    adjacency = adjacency_list(labels, border)
-    graph_result(adjacency)
+if __name__ == "__main__":
+    labels, border = img_planar.img_load()
+    adjacency = img_planar.adjacency_list(labels, border)
+    img_planar.graph_result(adjacency)
+  
