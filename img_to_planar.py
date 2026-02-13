@@ -31,7 +31,7 @@ class img_planar:
 
         img = io.imread(image_path)
         gray = color.rgb2gray(img)
-        #print(np.unique(gray)) # values of the pixels in image range from 0-1 
+        #print(np.unique(gray)) # values of the pixels in image range from 0-1 (border detection)
 
 
 # setting parameter for the border and region.
@@ -45,9 +45,11 @@ class img_planar:
 #region detection
         print("Number of regions labeled in the image: ", num_regions - 1)
 
-        #io.imshow(labels)
-        #plt.axis('off')
-        #plt.show()
+#tab20 map to better represent the integers assigned to colors
+        plt.imshow(labels, cmap='tab20')
+        plt.colorbar(label="region label map")
+        plt.axis('off')
+        plt.show()
 
         return labels, border
 
@@ -61,7 +63,7 @@ class img_planar:
             for x in range(1, w - 1):
                 if border[y, x]:
                     neighbors = set([
-                        labels[y-1, x], # region below
+                        labels[y-1, x], # region below       
                         labels[y+1, x], # region above
                         labels[y, x-1], # region left
                         labels[y, x+1] # region right
