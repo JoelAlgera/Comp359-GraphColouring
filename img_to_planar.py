@@ -31,9 +31,9 @@ def draw_graph(adj: dict | nx.Graph) -> None:
     plt.show()
 
 class img_planar:
-    def img_load():
+    def img_load(image_path="NW_AMER.jpg"):
 
-        img = io.imread("NW_AMER.jpg")
+        img = io.imread(image_path)
         gray = color.rgb2gray(img)
         #print(np.unique(gray)) # values of the pixels in image range from 0-1 
 
@@ -63,7 +63,7 @@ class img_planar:
 #region detection
         print("Number of regions labeled in the image: ", num_regions - 1)
 
-        #io.imshow(labels)
+        io.imshow(labels)
         #plt.axis('off')
         #plt.show()
 
@@ -101,7 +101,7 @@ class img_planar:
 
 
 if __name__ == "__main__":
-    labels, border = img_planar.img_load()
+    labels, border = img_planar.img_load("thinnerTest.jpg")
     adjacency = img_planar.adjacency_list(labels, border)
     img_planar.graph_result(adjacency)
   
