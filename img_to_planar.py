@@ -1,12 +1,8 @@
 
 from skimage import color, io, measure
 import matplotlib.pyplot as plt
-#import numpy as np
 import networkx as nx
 
-
-### adjacency = arcs
-### num_regions = nodes
 
 
 def draw_graph(adj: dict | nx.Graph) -> None:
@@ -38,23 +34,9 @@ class img_planar:
         #print(np.unique(gray)) # values of the pixels in image range from 0-1 
 
 
-
-#Visualization
-        #plt.imshow(gray, cmap="gray")
-        #plt.colorbar()
-        #plt.axis('off')
-        #plt.show()
-
-
-
 # setting parameter for the border and region.
         border = gray < 0.3 
         regions = gray > 0.3
-
-        #plt.imshow(regions, cmap="gray")
-        #plt.axis('off')
-        #plt.show()
-
 
 
 #connectivity 2 is used as connectivity 1 only tracks up down left right. diagonals must be considered.
@@ -63,7 +45,7 @@ class img_planar:
 #region detection
         print("Number of regions labeled in the image: ", num_regions - 1)
 
-        io.imshow(labels)
+        #io.imshow(labels)
         #plt.axis('off')
         #plt.show()
 
