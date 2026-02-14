@@ -207,7 +207,11 @@ adjacency = img_to_planar.img_planar.adjacency_list(labels, border)
 buffer = [-1] + [0]*labels.max()
 state = State(buffer, adjacency)
 min_colour(state)
-img_to_planar.img_planar.graph_result(adjacency) #print the graph just to check it is correct.. seems to be
+# for each node in the graph, save its colour;index 0 is the background colour so dont include it it
+node_colors = {}
+for i in range(1, len(state.nodes)):
+    node_colors[i] = state.nodes[i]
+img_to_planar.img_planar.graph_result(adjacency, node_colors=node_colors) #yes it was correct... mostly pass in the colours also
 
 
 

@@ -3,9 +3,11 @@ from skimage import color, io, measure
 import matplotlib.pyplot as plt
 import networkx as nx
 
+# colours we only need 4 but there are some extras, colour white is for the background, so the first color is green
+COLOR_PALETTE = ["white", "green", "red", "blue", "yellow", "purple", "pink", "orange", "lightblue"]
 
 
-def draw_graph(adj: dict | nx.Graph) -> None:
+def draw_graph(adj: dict | nx.Graph, node_colors: dict | None = None) -> None:
     """Draw a graph. adj must be an adjacency list (dict of lists) or an nx.Graph.""" #this is just so I can hover for hint in VSCode
     if isinstance(adj, nx.Graph):
         G = adj
@@ -15,6 +17,17 @@ def draw_graph(adj: dict | nx.Graph) -> None:
         raise TypeError("adj must be an adjacency list (dict) or an nx.Graph")
         
     draw_kw = dict(with_labels=True, node_size=750, font_size=10) #this is for the labels
+    if node_colors is not None:
+        color_list = []
+        for n in G.nodes():
+            color_list.append(node_colors.get(n, 0))
+        node_color = []
+        for c in color_list:
+            if c < len(COLOR_PALETTE):
+                node_color.append(COLOR_PALETTE[c])
+            else:
+                node_color.append(COLOR_PALETTE[1])
+        draw_kw["node_color"] = node_color
 
     plt.figure(figsize=(6, 6))
     try:
@@ -79,10 +92,10 @@ class img_planar:
         return adjacency
 
 # graph creation with networkx
-    def graph_result(adjacency):
+    def graph_result(adjacency, node_colors=None):
         graph = nx.Graph()
         graph.add_edges_from(adjacency)
-        draw_graph(graph)
+        draw_graph(graph, node_colors=node_colors)
 
 
 if __name__ == "__main__":
