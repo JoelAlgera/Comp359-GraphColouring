@@ -211,7 +211,7 @@ min_colour(state)
 node_colors = {}
 for i in range(1, len(state.nodes)):
     node_colors[i] = state.nodes[i]
-img_to_planar.img_planar.graph_result(adjacency, node_colors=node_colors) #yes it was correct... mostly pass in the colours also
+img_to_planar.img_planar.graph_result(adjacency, node_colors=node_colors) #yes it was correct... mostly, just need more info
 
 
 
