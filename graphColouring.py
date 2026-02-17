@@ -1,5 +1,7 @@
 import random
 import img_to_planar as img_to_planar
+import numpy as np
+import matplotlib.pyplot as plt
 #Used chatgpt to create the sample graphs to test the algorithms efficacy - https://chatgpt.com/share/698bc9df-1180-8004-a495-fbc1b0f8ccdc
 class State:
     cycle = 0
@@ -200,7 +202,7 @@ def biggest(): #this is another chatgpt graph WHICH IS NON-PLANAR! This means th
 
 
 #copied driver function from img_to_planar to run the graph colouring on the graph generated from the image
-labels, border = img_to_planar.img_planar.img_load()
+labels, border = img_to_planar.img_planar.img_load("WaitImGoated.jpg")
 adjacency = img_to_planar.img_planar.adjacency_list(labels, border)
 
 #ran into problems indexing from node 1, so i just added node 0 as a dummy node to make the indexing work out
@@ -213,8 +215,24 @@ for i in range(1, len(state.nodes)):
     node_colors[i] = state.nodes[i]
 img_to_planar.img_planar.graph_result(adjacency, node_colors=node_colors) #yes it was correct... mostly, just need more info
 
+Colour_Pallete = { #map colour indices to actual rgb values
+    0: [255,255,255], #white
+    1: [0,255,0], #green
+    2: [255,0,0], #red
+    3: [0,0,255], #blue
+    4: [255,255,0], #yellow
+    5: [128,0,128], #purple
+    6: [255,192,203], #pink
+    7: [255,165,0], #orange
+}
 
-
+h,w = labels.shape
+coloured_image = np.zeros((h,w,3), dtype=np.uint8)
+for node, colour in node_colors.items():
+    mask = labels == node
+    coloured_image[mask] = Colour_Pallete.get(colour, "white")
+plt.imshow(coloured_image)
+plt.show()
 
 
 #Run Whichever Graph search you want
