@@ -1,7 +1,7 @@
-
-from skimage import color, io, measure
+from skimage import color, io, measure, graph, segmentation
 import matplotlib.pyplot as plt
 import networkx as nx
+import numpy as np
 
 # colours we only need 4 but there are some extras, colour white is for the background, so the first color is green
 COLOR_PALETTE = ["white", "green", "red", "blue", "yellow", "purple", "pink", "orange", "lightblue"]
@@ -58,35 +58,36 @@ class img_planar:
 #region detection
         print("Number of regions labeled in the image: ", num_regions - 1)
 
-#tab20 map to better represent the integers assigned to colors
-        plt.imshow(labels, cmap='tab20')
-        plt.colorbar(label="region label map")
+        plt.imshow(labels > 0, cmap='gray') 
+        
+        # Add region numbers to help visualize the regions and debug
+        for region in measure.regionprops(labels):
+            y, x = region.centroid
+            plt.text(x, y, str(region.label), color='red', 
+                     fontsize=8, ha='center', va='center', fontweight='bold')
+                    # try to center it not spending alot of time on it
+
         plt.axis('off')
+        plt.title("Numbered Regions")
         plt.show()
 
         return labels, border
 
     def adjacency_list(labels, border):
+        # skimage has some useful things to help with this process and
+        # yes using an external lib is like cheating,
+        #  but its much better than what we were doing before and easy
+
+        expanded_labels = segmentation.expand_labels(labels, distance=10) 
+        
+       # Remember: border.astype(float) is the edge map (array of floats) we get from border = gray < 0.3
+       # as the rag_boundary function requires (labels, edge_map) 
+       # this is hacky and we should consider changing this later, but seems to test quite well
+        rag = graph.rag_boundary(expanded_labels, border.astype(float))
         adjacency = set()
-
-        h, w = labels.shape #dimensions of the labeled map
-
-        '''scanning the whole labeled map
-        increase constant value to work for images with thicker borders. Since value is hardcoded, ensure it works with other images as well  '''
-        for y in range (1, h - 12):
-            for x in range(1, w - 12):
-                if border[y, x]:
-                    neighbors = set([
-                        labels[y-12, x], # region below     
-                        labels[y+12, x], # region above
-                        labels[y, x-12], # region left
-                        labels[y, x+12] # region right
-                    ])
-                    neighbors.discard(0) # removing 0 label from the set, 0 is connected to every region.\
-                    for a in neighbors:
-                        for b in neighbors:
-                            if a!= b:
-                                adjacency.add(tuple(sorted((int(a), int(b)))))
+        for a, b in rag.edges():
+            if a != 0 and b != 0:
+                adjacency.add(tuple(sorted((int(a), int(b)))))
         print("set of edges: ", adjacency)
 
         return adjacency
@@ -99,7 +100,9 @@ class img_planar:
 
 
 if __name__ == "__main__":
-    labels, border = img_planar.img_load("ILikeDrawing.jpg")
+    labels, border = img_planar.img_load("WaitImGoated.jpg")
     adjacency = img_planar.adjacency_list(labels, border)
     img_planar.graph_result(adjacency)
+
+
   
