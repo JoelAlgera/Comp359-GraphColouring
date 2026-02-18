@@ -232,6 +232,7 @@ for node, colour in node_colors.items():
     mask = labels == node
     coloured_image[mask] = Colour_Pallete.get(colour, "white")
 plt.figure(figsize=(8, 8)) # new plot to show all at same time
+plt.imshow(coloured_image)
 plt.show(block=False)
 plt.show()
 
