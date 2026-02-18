@@ -231,7 +231,8 @@ coloured_image = np.zeros((h,w,3), dtype=np.uint8)
 for node, colour in node_colors.items():
     mask = labels == node
     coloured_image[mask] = Colour_Pallete.get(colour, "white")
-plt.imshow(coloured_image)
+plt.figure(figsize=(8, 8)) # new plot to show all at same time
+plt.show(block=False)
 plt.show()
 
 

@@ -37,7 +37,7 @@ def draw_graph(adj: dict | nx.Graph, node_colors: dict | None = None) -> None:
         print("Tried to draw planar, but failed. Drawing with spring_layout.")
         pos = nx.spring_layout(G)
         nx.draw(G, pos=pos, **draw_kw)
-    plt.show()
+    plt.show(block=False)
 
 class img_planar:
     def img_load(image_path="NW_AMER.jpg"):
@@ -58,6 +58,7 @@ class img_planar:
 #region detection
         print("Number of regions labeled in the image: ", num_regions - 1)
 
+        plt.figure(figsize=(8, 8)) # new plot to show all at same time
         plt.imshow(labels > 0, cmap='gray') 
         
         # Add region numbers to help visualize the regions and debug
@@ -69,7 +70,7 @@ class img_planar:
 
         plt.axis('off')
         plt.title("Numbered Regions")
-        plt.show()
+        plt.show(block=False)
 
         return labels, border
 
