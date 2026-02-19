@@ -1,7 +1,8 @@
 # Comp359-GraphColouring
+
 A Group project with Joel Algera, Brayden Schneider, Alexander Calderon, and Jacob Thompson for our course in COMP 359 ON1 on Design and Analysis of Algorithms
 
-Our initial task was creating a Naive (non-minimal colour) graph colouring algorithm for planar graphs, where no neighbouring nodes can share the same colour. 
+Our initial task was creating a Naive (non-minimal colour) graph colouring algorithm for planar graphs, where no neighbouring nodes can share the same colour.
 
 In this project, we hope to learn more about the proposed graph search methods, explore the variations in algorithm complexity following each strategy's application, and experiment with the validity of the 4-colour theorem along with potential optimizations to our colouring algorithm if possible.
 
@@ -18,3 +19,10 @@ Our plans to further our project and exploration:<br>
 -If we can output the graphs as 2d maps we would like to explore ways of taking in an uncoloured 2d map, converting it to a planar graph, colouring it, and outputting the coloured version of that graph where there are no adjacent colours.<br>
 -Finally if all other goals are completed create a user-friendly GUI to present the algorithm at runtime.<br>
 
+## References
+
+- Used chatgpt to create the sample graphs to test the algorithms efficacy - <https://chatgpt.com/share/698bc9df-1180-8004-a495-fbc1b0f8ccdc>
+
+## Debug Videos
+
+- Joel: <https://youtu.be/N339ilLS49M>
