@@ -23,6 +23,13 @@ Our plans to further our project and exploration:<br>
 
 - Used chatgpt to create the sample graphs to test the algorithms efficacy - <https://chatgpt.com/share/698bc9df-1180-8004-a495-fbc1b0f8ccdc>
 
+## Python Libraries
+
+This project used the following python libraries:
+
+- skimage - <https://scikit-image.org/docs/stable/api/api.html>
+-
+
 ## Debug Videos
 
 - Joel: <https://youtu.be/N339ilLS49M>
