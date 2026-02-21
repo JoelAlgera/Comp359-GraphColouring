@@ -24,7 +24,7 @@ Our plans to further our project and exploration:<br>
 - Used chatgpt to create the sample graphs to test the algorithms efficacy - <https://chatgpt.com/share/698bc9df-1180-8004-a495-fbc1b0f8ccdc>
 - Networkx(nx) paper : Hagberg, A. A., Schult, D. A., & Swart, P. J. (2008). Exploring network structure, dynamics, and function using NetworkX
 - The algorithm used by networkx, to draw the graphs: M. Chrobak and T.H. Payne: A Linear-time Algorithm for Drawing a Planar Graph on a Grid 1989 http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.51.6677
-- SkiImage(ski) paper/ rag algorithm: van der Walt S. et al. (2014). scikit-image: Image processing in Python. PeerJ, 2:e453. <https://doi.org/10.1016/0020-0190(95)00020-D>
+- SkiImage(ski) paper/ rag algorithm: van der Walt S. et al. (2014). scikit-image: Image processing in Python. PeerJ, 2:e453. <https://doi.org/10.1016/0020-0190(95)00020-D> (This one is buggy, you need to copy and paste it)
 
 
 
