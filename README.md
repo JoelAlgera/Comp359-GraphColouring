@@ -32,7 +32,7 @@ Our plans to further our project and exploration:<br>
 
 This project used the following python libraries:
 
-- skimage - <https://scikit-image.org/docs/stable/api/api.html>
+- skimage - <https://scikit-image.org/>
 - networkx - <https://networkx.org/en/>
 - Numbpy - <https://numpy.org/>
 - MatlibPlot- <https://matplotlib.org/>
@@ -42,7 +42,11 @@ This project used the following python libraries:
 - Doing colored nodes with nx: https://networkx.org/documentation/latest/reference/algorithms/coloring.html#module-networkx.algorithms.coloring
 - Doing colored nodes with nx: https://networkx.org/documentation/latest/auto_examples/drawing/plot_house_with_colors.html
 - Converting a nxgraph: https://networkx.org/documentation/latest/reference/convert.html
+- skimage labels: https://scikit-image.org/docs/stable/api/skimage.measure.html#skimage.measure.label
+ 
 ## Debug Videos
 
 - Joel: <https://youtu.be/N339ilLS49M>
 - Brayden <https://youtu.be/otu7jLRBgzM>
+- Alexander <https://youtu.be/VQuDTsOATrY>
+
