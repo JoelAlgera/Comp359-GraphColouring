@@ -49,4 +49,5 @@ This project used the following python libraries:
 - Joel: <https://youtu.be/N339ilLS49M>
 - Brayden <https://youtu.be/otu7jLRBgzM>
 - Alexander <https://youtu.be/VQuDTsOATrY>
+- Jacob <https://youtu.be/yzA78_QZXLY>
 
