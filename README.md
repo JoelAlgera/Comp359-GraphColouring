@@ -21,8 +21,6 @@ Our plans to further our project and exploration:<br>
 -Finally if all other goals are completed create a user-friendly GUI to present the algorithm at runtime.<br>
 
 ## How to Run
-
-### 1. Clone the repository
 ```bash
 git clone https://github.com/JoelAlgera/Comp359-GraphColouring.git
 cd Comp359-GraphColouring
