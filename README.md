@@ -20,6 +20,13 @@ Our plans to further our project and exploration:<br>
 -If we can output the graphs as 2d maps we would like to explore ways of taking in an uncoloured 2d map, converting it to a planar graph, colouring it, and outputting the coloured version of that graph where there are no adjacent colours.<br>
 -Finally if all other goals are completed create a user-friendly GUI to present the algorithm at runtime.<br>
 
+## Final Results
+We are able to take a input image and convert it into a planar graph, and a outputted colored image. Examples below
+
+<img src="https://github.com/JoelAlgera/Comp359-GraphColouring/raw/main/images/WaitImGoated.jpg" width="600" />
+<img src="https://github.com/JoelAlgera/Comp359-GraphColouring/raw/main/images/goated_colored.png" width="600" />
+
+
 ## References
 
 - Used chatgpt to create the sample graphs to test the algorithms efficacy - <https://chatgpt.com/share/698bc9df-1180-8004-a495-fbc1b0f8ccdc>
