@@ -20,6 +20,14 @@ Our plans to further our project and exploration:<br>
 -If we can output the graphs as 2d maps we would like to explore ways of taking in an uncoloured 2d map, converting it to a planar graph, colouring it, and outputting the coloured version of that graph where there are no adjacent colours.<br>
 -Finally if all other goals are completed create a user-friendly GUI to present the algorithm at runtime.<br>
 
+## How to Run
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/JoelAlgera/Comp359-GraphColouring.git
+cd Comp359-GraphColouring
+python3 .\graphColouring.py
+```
 ## Final Results
 We are able to take a input image and convert it into a planar graph, and a outputted colored image. Examples below
 
