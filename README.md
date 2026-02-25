@@ -1,4 +1,5 @@
-# Comp359-GraphColouring
+# Comp359-GraphColouring Group 11
+
 
 A Group project with Joel Algera, Brayden Schneider, Alexander Calderon, and Jacob Thompson for our course in COMP 359 ON1 on Design and Analysis of Algorithms
 
