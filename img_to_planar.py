@@ -101,7 +101,7 @@ class img_planar:
 
 
 if __name__ == "__main__":
-    labels, border = img_planar.img_load("WaitImGoated.jpg")
+    labels, border = img_planar.img_load("images/thinnerTest.jpg")
     adjacency = img_planar.adjacency_list(labels, border)
     img_planar.graph_result(adjacency)
 

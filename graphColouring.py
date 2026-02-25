@@ -202,7 +202,7 @@ def biggest(): #this is another chatgpt graph WHICH IS NON-PLANAR! This means th
 
 
 #copied driver function from img_to_planar to run the graph colouring on the graph generated from the image
-labels, border = img_to_planar.img_planar.img_load("WaitImGoated.jpg")
+labels, border = img_to_planar.img_planar.img_load("images/WaitImGoated.jpg")
 adjacency = img_to_planar.img_planar.adjacency_list(labels, border)
 
 #ran into problems indexing from node 1, so i just added node 0 as a dummy node to make the indexing work out
